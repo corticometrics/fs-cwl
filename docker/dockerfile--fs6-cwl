@@ -1,0 +1,11 @@
+FROM fs6-base:latest
+
+RUN yum -y install python34-setuptools git gcc gcc-c++
+RUN easy_install-3.4 pip
+RUN pip install fire cwlref-runner toil[cwl] awscli
+# PW 2017/04/26: CWL needs nodejs to do some string manipulation
+RUN curl -sL https://rpm.nodesource.com/setup_4.x | bash - && \
+    yum install -y nodejs
+
+ADD wrappers/ /cwl
+ADD workflows/ /cwl

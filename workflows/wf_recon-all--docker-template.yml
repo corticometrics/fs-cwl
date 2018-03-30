@@ -1,0 +1,111 @@
+## Most parameters are set to default to usual value in cwl files
+#  hard-coded paths to files (atlases, lookup tables, etc)
+aseg_atlas_with_skull:
+  class: File
+  path: /opt/freesurfer/average/RB_all_withskull_2016-05-10.vc700.gca
+aseg_atlas:
+  class: File
+  path: /opt/freesurfer/average/RB_all_2016-05-10.vc700.gca
+folding_atlas_lh:
+  class: File
+  path: /opt/freesurfer/average/lh.folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+folding_atlas_rh:
+  class: File
+  path: /opt/freesurfer/average/rh.folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+aparc_atlas_lh:
+  class: File
+  path: /opt/freesurfer/average/lh.DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+aparc_atlas_rh:
+  class: File
+  path: /opt/freesurfer/average/rh.DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+a2009s_atlas_lh:
+  class: File
+  path: /opt/freesurfer/average/lh.CDaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+a2009s_atlas_rh:
+  class: File
+  path: /opt/freesurfer/average/rh.CDaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+dkt_atlas_lh:
+  class: File
+  path: /opt/freesurfer/average/lh.DKTaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+dkt_atlas_rh:
+  class: File
+  path: /opt/freesurfer/average/rh.DKTaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+aseg_ctab:
+  class: File
+  path: /opt/freesurfer/ASegStatsLUT.txt
+wmparc_ctab:
+  class: File
+  path: /opt/freesurfer/WMParcStatsLUT.txt
+
+## Main variables used frequently
+#  initial input
+input_image:
+  class: File
+  path: ---infile---
+dicom_input:
+  class: Directory
+  path: /subjects/---subject_name---/input
+input_metadata:
+  class: File
+  path: /opt/freesurfer/fs-aseg.json
+#  subject name
+subject: ---subject_name---
+#  hemis and surfs
+lh: lh
+rh: rh  
+white: white
+pial: pial
+
+## Values not set by default in cwl files  
+#  Fix-Topology-Copy
+lh_orig_nofix_copy: lh.orig
+lh_inflated_nofix_copy: lh.inflated
+rh_orig_nofix_copy: rh.orig
+rh_inflated_nofix_copy: rh.inflated
+
+#  Cortical-Parc
+lh_aparc_annot: lh.aparc.annot
+rh_aparc_annot: rh.aparc.annot
+#  Cortical-Parc-Lobes
+lh_aparc_lobes_annot: lh.aparc.lobes.annot
+rh_aparc_lobes_annot: rh.aparc.lobes.annot
+#  Cortical-Parc-2
+lh_aparc_a2009s_annot: lh.aparc.a2009s.annot
+rh_aparc_a2009s_annot: rh.aparc.a2009s.annot
+#  Cortical-Parc-3
+lh_aparc_DKTatlas_annot: lh.aparc.DKTatlas.annot
+rh_aparc_DKTatlas_annot: rh.aparc.DKTatlas.annot
+#  Parcellation-Stats_white
+aparc_stats: aparc.stats
+aparc_annot: aparc.annot
+aparc_ctab: aparc.annot.ctab
+#  Parcellation-Stats_pial
+aparc_pial_stats: aparc.pial.stats
+#  Parcellation-Stats_lobes
+aparc_lobes_stats: aparc.lobes.stats
+aparc_lobes_annot: aparc.lobes.annot
+aparc_lobes_ctab: aparc.annot.ctab
+#  Parcellation-Stats-2
+aparc_a2009s_stats: aparc.a2009s.stats
+aparc_a2009s_annot: aparc.a2009s.annot
+aparc_a2009s_ctab: aparc.annot.a2009s.ctab
+#  Parcellation-Stats-3
+aparc_DKT_stats: aparc.DKTatlas.stats
+aparc_DKT_annot: aparc.DKTatlas.annot
+aparc_DKT_ctab: aparc.annot.DKTatlas.ctab
+
+# DICOM output
+# Aseg-to-DICOM_part0
+aseg_rawavg: aseg-rawavg.nii.gz
+# Aseg-to-DICOM_part1
+aseg_dicom: aseg.dcm
+
+## Skip for now until json is created for these
+# AParcAseg-aparc-to-DICOM_part0
+#aparc_aseg_rawavg: aparc_plus_aseg-rawavg.nii.gz
+# AParcAseg-aparc-to-DICOM_part1
+#aparc_aseg_dicom: aparc_plus_aseg.dcm
+# LobesAseg-to-DICOM_part0
+#aparc_lobes_aseg_rawavg: aparc.lobes_plus_aseg-rawavg.nii.gz
+# LobesAseg-to-DICOM_part1
+#aparc_lobes_aseg_dicom: aparc.lobes_plus_aseg-rawavg.dcm
